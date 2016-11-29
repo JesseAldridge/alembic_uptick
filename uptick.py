@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import shutil, re, os
+import shutil, re, os, subprocess
 
 
 with open('alembic_uptick_diff.txt') as f:
@@ -34,3 +34,5 @@ new_text = re.sub(
 
 with open(new_path, 'w') as f:
   f.write(new_text)
+
+subprocess.call(['git', 'add', new_path])
