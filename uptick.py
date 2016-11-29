@@ -29,10 +29,14 @@ new_text = re.sub(old_val_str, new_val_str, old_text)
 new_text = re.sub(
   '^Revises: [0-9a-f]+$', 'Revises: {}'.format(last_val_str), new_text, flags=re.MULTILINE)
 new_text = re.sub(
-  "^down_revision = '[0-9a-f]+'$", 'down_revision: '{}''.format(last_val_str), new_text,
+  "^down_revision = '[0-9a-f]+'$", "down_revision: '{}'".format(last_val_str), new_text,
   flags=re.MULTILINE)
 
 with open(new_path, 'w') as f:
   f.write(new_text)
 
-subprocess.call(['git', 'add', new_path])
+for command in (
+  ['git', 'add', new_path],
+  ['git', 'commit', '-am', 'auto alembic uptick'],
+  ['git', 'push', 'origin']):
+  subprocess.call(command)
