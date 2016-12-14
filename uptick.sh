@@ -1,6 +1,5 @@
 
 #git checkout JesseAldridge/reservation_window
-git checkout reservation_window
 
 ls alembic/versions/*.py | grep 0123456789 | tail -n 10 > alembic_uptick_current.txt
 git checkout upstream/dev
