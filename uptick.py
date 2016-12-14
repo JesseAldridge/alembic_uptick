@@ -36,5 +36,5 @@ with open(new_path, 'w') as f:
   f.write(new_text)
 
 for command in (
-  ['git', 'add', new_path]):
+  ['git', 'add', '"{}"'.format(new_path)]):
   subprocess.call(command)
