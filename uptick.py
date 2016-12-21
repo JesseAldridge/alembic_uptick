@@ -35,6 +35,4 @@ new_text = re.sub(
 with open(new_path, 'w') as f:
   f.write(new_text)
 
-for command in (
-  ['git', 'add', '"{}"'.format(new_path)]):
-  subprocess.call(command)
+subprocess.call(['git', 'add', new_path])
